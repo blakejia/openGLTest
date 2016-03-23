@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GlDraw.h"
+#include "HelloWorldScene.h"
 
 USING_NS_CC;
 
@@ -40,9 +40,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("openGL-cocos", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("openGLTest", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("openGL-cocos");
+        glview = GLViewImpl::create("openGLTest");
 #endif
         director->setOpenGLView(glview);
     }
@@ -75,7 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = GlDraw::createScene();
+    auto scene = HelloWorld::createScene();
 
     // run
     director->runWithScene(scene);
